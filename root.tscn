@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b833nittls7yw"]
+
+[ext_resource type="PackedScene" uid="uid://cdnftki8xemni" path="res://city_block.tscn" id="1_6naoy"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.29152, -0.956565, 0, 0.956565, -0.29152, -11.342, 162.333, -2.785)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.897551, 0.0946791, -0.430625, -1.3276e-09, 0.976672, 0.214735, 0.440911, 0.192736, -0.876613, -36.3005, 132.439, -186.773)
+
+[node name="CityBlock" parent="." instance=ExtResource("1_6naoy")]
+
+[node name="CityBlock2" parent="." instance=ExtResource("1_6naoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 345.035, 0, 0)
