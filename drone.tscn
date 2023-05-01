@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://brtegrfrx1g41"]
+
+[ext_resource type="Script" path="res://drone.gd" id="1_hrsyd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8yeu6"]
+height = 0.5
+
+[node name="Drone" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.729, 33.2887, 338.508)
+gravity_scale = 2.66454e-15
+script = ExtResource("1_hrsyd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_8yeu6")

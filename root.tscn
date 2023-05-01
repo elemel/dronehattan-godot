@@ -1,16 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://b833nittls7yw"]
+[gd_scene load_steps=7 format=3 uid="uid://b833nittls7yw"]
 
 [ext_resource type="PackedScene" uid="uid://cdnftki8xemni" path="res://city_block.tscn" id="1_6naoy"]
+[ext_resource type="PackedScene" uid="uid://brtegrfrx1g41" path="res://drone.tscn" id="2_471w8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvoh6"]
+sky_energy_multiplier = 2.0
+
+[sub_resource type="Sky" id="Sky_0gkv7"]
+sky_material = SubResource("ProceduralSkyMaterial_cvoh6")
+
+[sub_resource type="Environment" id="Environment_7y5h2"]
+background_mode = 2
+sky = SubResource("Sky_0gkv7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yplq5"]
+size = Vector3(256, 1, 256)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.29152, -0.956565, 0, 0.956565, -0.29152, -11.342, 162.333, -2.785)
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.998774, 0.032846, -0.0370253, 8.26612e-09, -0.748065, -0.663626, -0.0494947, -0.662813, 0.747148, -11.342, 162.333, -2.785)
+light_color = Color(1, 0.929412, 0.741176, 1)
+sky_mode = 1
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.897551, 0.0946791, -0.430625, -1.3276e-09, 0.976672, 0.214735, 0.440911, 0.192736, -0.876613, -36.3005, 132.439, -186.773)
+[node name="Sky" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7y5h2")
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="Chunk" type="StaticBody3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.636, 0, 322.731)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/Chunk"]
+shape = SubResource("BoxShape3D_yplq5")
 
 [node name="CityBlock" parent="." instance=ExtResource("1_6naoy")]
 
 [node name="CityBlock2" parent="." instance=ExtResource("1_6naoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 345.035, 0, 0)
+
+[node name="Drone" parent="." instance=ExtResource("2_471w8")]
