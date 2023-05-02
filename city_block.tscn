@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdnftki8xemni"]
+[gd_scene load_steps=3 format=3 uid="uid://cdnftki8xemni"]
 
 [ext_resource type="Script" path="res://city_block.gd" id="1_6tvrq"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_0cabq"]
+size = Vector2(244, 62)
+
 [node name="CityBlock" type="Node3D"]
 script = ExtResource("1_6tvrq")
+
+[node name="Area" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -0.000638686, 0.000388302, 0.000638888, 1, -0.000514644, -0.000387969, 0.000514895, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_0cabq")
