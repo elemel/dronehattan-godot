@@ -11,6 +11,7 @@ size = Vector3(1, 0.5, 1)
 [node name="Drone" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.729, 33.2887, 212.666)
 gravity_scale = 2.66454e-15
+continuous_cd = true
 script = ExtResource("1_hrsyd")
 
 [node name="Camera3D" type="Camera3D" parent="."]

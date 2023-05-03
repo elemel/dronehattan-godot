@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://du7tqe75amtkp"]
+
+[ext_resource type="Script" path="res://city_block_generator.gd" id="1_0ub7m"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tibki"]
+size = Vector2(274, 80)
+
+[node name="CityBlockGenerator" type="Node3D"]
+script = ExtResource("1_0ub7m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_tibki")

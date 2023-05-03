@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b833nittls7yw"]
+[gd_scene load_steps=8 format=3 uid="uid://dscrvtxgycypx"]
 
-[ext_resource type="PackedScene" uid="uid://cdnftki8xemni" path="res://city_block.tscn" id="1_6naoy"]
-[ext_resource type="PackedScene" uid="uid://bobqd83ywjuxo" path="res://city_grid.tscn" id="1_81dp3"]
+[ext_resource type="PackedScene" uid="uid://bn3a7jg4kv6lg" path="res://city_grid_generator.tscn" id="1_81dp3"]
 [ext_resource type="PackedScene" uid="uid://brtegrfrx1g41" path="res://drone.tscn" id="2_471w8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvoh6"]
@@ -13,6 +12,12 @@ sky_material = SubResource("ProceduralSkyMaterial_cvoh6")
 [sub_resource type="Environment" id="Environment_7y5h2"]
 background_mode = 2
 sky = SubResource("Sky_0gkv7")
+fog_sun_scatter = 0.01
+fog_density = 0.0001
+fog_sky_affect = 0.1
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.560784, 0.780392, 0.780392, 1)
+volumetric_fog_emission_energy = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q8iqb"]
 size = Vector3(256, 1, 256)
@@ -23,8 +28,10 @@ size = Vector2(256, 256)
 [node name="Node3D" type="Node3D"]
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.998774, 0.032846, -0.0370253, 8.26612e-09, -0.748065, -0.663626, -0.0494947, -0.662813, 0.747148, -11.342, 162.333, -2.785)
+transform = Transform3D(-0.301684, 0.684343, -0.663823, -0.200541, -0.726235, -0.657545, -0.932078, -0.0652473, 0.356333, -11.342, 162.333, -2.785)
 light_color = Color(1, 0.929412, 0.741176, 1)
+light_energy = 2.0
+light_indirect_energy = 2.0
 sky_mode = 1
 
 [node name="Sky" type="WorldEnvironment" parent="."]
@@ -33,6 +40,7 @@ environment = SubResource("Environment_7y5h2")
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="Chunk" type="StaticBody3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, 2.08165e-12)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/Chunk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
@@ -41,16 +49,8 @@ shape = SubResource("BoxShape3D_q8iqb")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/Chunk"]
 mesh = SubResource("PlaneMesh_2fst6")
 
-[node name="CityGrid" parent="." instance=ExtResource("1_81dp3")]
-
-[node name="CityBlock" parent="." instance=ExtResource("1_6naoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 30, 2.08165e-12)
-
-[node name="CityBlock2" parent="." instance=ExtResource("1_6naoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274, 30, 2.08165e-12)
-
-[node name="CityBlock3" parent="." instance=ExtResource("1_6naoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 30, 80)
-
 [node name="Drone" parent="." instance=ExtResource("2_471w8")]
 transform = Transform3D(0.940869, 0, 0.338771, 0, 1, 0, -0.338771, 0, 0.940869, 172.729, 79.9304, 150.615)
+
+[node name="CityGridGenerator" parent="." instance=ExtResource("1_81dp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, 2.08165e-12)

@@ -4,15 +4,13 @@ const ALLEY_WIDTH = 30
 const STREET_WIDTH = 18
 
 var rng = RandomNumberGenerator.new()
-# var size = Vector2(274, 80) - Vector2(30, 18)
 
-@onready var volume: MeshInstance3D = $Volume
+@onready var mesh_instance = $MeshInstance3D
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	var volume_mesh: BoxMesh = volume.mesh
-	var area_size = Vector2(volume_mesh.size.x, volume_mesh.size.z)
-	var block_height = volume_mesh.size.y
+	var area_size: Vector2 = mesh_instance.mesh.size
+	var block_height = 60
 	var buildable_size = area_size - Vector2(ALLEY_WIDTH, STREET_WIDTH)
 	var stack = [Rect2(-0.5 * buildable_size, buildable_size)]
 
@@ -49,7 +47,7 @@ func _ready():
 				mesh_instance.mesh = mesh
 				mesh_instance.position = Vector3(
 					rect.position.x + 0.5 * rect.size.x,
-					0.5 * building_height - 0.5 * block_height,
+					0.5 * building_height,
 					rect.position.y + 0.5 * rect.size.y)
 
 				var hue = rng.randfn(0.3, 0.05)
@@ -63,6 +61,6 @@ func _ready():
 
 				add_child(mesh_instance)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	pass

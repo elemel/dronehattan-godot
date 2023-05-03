@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn3a7jg4kv6lg"]
+
+[ext_resource type="Script" path="res://city_grid_generator.gd" id="1_uh0f2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_exw05"]
+size = Vector2(2740, 8880)
+
+[node name="CityGridGenerator" type="Node3D"]
+script = ExtResource("1_uh0f2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_exw05")
