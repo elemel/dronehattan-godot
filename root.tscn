@@ -12,12 +12,10 @@ sky_material = SubResource("ProceduralSkyMaterial_cvoh6")
 [sub_resource type="Environment" id="Environment_7y5h2"]
 background_mode = 2
 sky = SubResource("Sky_0gkv7")
-fog_sun_scatter = 0.01
-fog_density = 0.0001
+fog_density = 0.001
 fog_sky_affect = 0.1
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
-volumetric_fog_albedo = Color(0.560784, 0.780392, 0.780392, 1)
-volumetric_fog_emission_energy = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q8iqb"]
 size = Vector3(256, 1, 256)
@@ -28,11 +26,12 @@ size = Vector2(256, 256)
 [node name="Node3D" type="Node3D"]
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.301684, 0.684343, -0.663823, -0.200541, -0.726235, -0.657545, -0.932078, -0.0652473, 0.356333, -11.342, 162.333, -2.785)
-light_color = Color(1, 0.929412, 0.741176, 1)
+transform = Transform3D(-0.738055, 0.602668, -0.303425, 0.10343, 0.545427, 0.831752, 0.666766, 0.582496, -0.464889, -11.342, 162.333, -2.785)
+light_color = Color(1, 1, 0.937255, 1)
 light_energy = 2.0
-light_indirect_energy = 2.0
-sky_mode = 1
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 1000.0
 
 [node name="Sky" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7y5h2")
