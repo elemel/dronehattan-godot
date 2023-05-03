@@ -35,11 +35,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.636, 0, 322.731)
 shape = SubResource("BoxShape3D_yplq5")
 
 [node name="CityBlock" parent="." instance=ExtResource("1_6naoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 30, 2.08165e-12)
 
 [node name="CityBlock2" parent="." instance=ExtResource("1_6naoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274, 2.08165e-12, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274, 30, 2.08165e-12)
 
 [node name="CityBlock3" parent="." instance=ExtResource("1_6naoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 80)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 30, 80)
 
 [node name="Drone" parent="." instance=ExtResource("2_471w8")]
+transform = Transform3D(0.940869, 0, 0.338771, 0, 1, 0, -0.338771, 0, 0.940869, 172.729, 79.9304, 150.615)

@@ -3,13 +3,12 @@ extends Node3D
 var rng = RandomNumberGenerator.new()
 # var size = Vector2(274, 80) - Vector2(30, 18)
 
-@onready var area: MeshInstance3D = $Area
+@onready var volume: MeshInstance3D = $Volume
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var areaMesh: PlaneMesh = area.mesh
-	var buildableSize = areaMesh.size - Vector2(30, 18)
-
+	var volumeMesh: BoxMesh = volume.mesh
+	var buildableSize = Vector2(volumeMesh.size.x, volumeMesh.size.z) - Vector2(30, 18)
 	var stack = [Rect2(-0.5 * buildableSize, buildableSize)]
 
 	while stack:
