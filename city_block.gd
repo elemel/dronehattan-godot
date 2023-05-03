@@ -8,9 +8,9 @@ var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var areaMesh: PlaneMesh = area.mesh
-	var size = areaMesh.size
+	var buildableSize = areaMesh.size - Vector2(30, 18)
 
-	var stack = [Rect2(-0.5 * size, size)]
+	var stack = [Rect2(-0.5 * buildableSize, buildableSize)]
 
 	while stack:
 		var rect: Rect2 = stack.pop_back()

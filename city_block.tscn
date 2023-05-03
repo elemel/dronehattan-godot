@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://city_block.gd" id="1_6tvrq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0cabq"]
-size = Vector2(244, 62)
+size = Vector2(274, 80)
 
 [node name="CityBlock" type="Node3D"]
 script = ExtResource("1_6tvrq")
