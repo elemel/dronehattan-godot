@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b833nittls7yw"]
+[gd_scene load_steps=9 format=3 uid="uid://b833nittls7yw"]
 
 [ext_resource type="PackedScene" uid="uid://cdnftki8xemni" path="res://city_block.tscn" id="1_6naoy"]
+[ext_resource type="PackedScene" uid="uid://bobqd83ywjuxo" path="res://city_grid.tscn" id="1_81dp3"]
 [ext_resource type="PackedScene" uid="uid://brtegrfrx1g41" path="res://drone.tscn" id="2_471w8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvoh6"]
@@ -39,6 +40,8 @@ shape = SubResource("BoxShape3D_q8iqb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/Chunk"]
 mesh = SubResource("PlaneMesh_2fst6")
+
+[node name="CityGrid" parent="." instance=ExtResource("1_81dp3")]
 
 [node name="CityBlock" parent="." instance=ExtResource("1_6naoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 30, 2.08165e-12)
