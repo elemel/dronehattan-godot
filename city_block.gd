@@ -42,7 +42,7 @@ func _ready():
 
 				var mesh_instance = MeshInstance3D.new()
 				mesh_instance.mesh = mesh
-				mesh_instance.position = Vector3(rect.position.x + 0.5 * rect.size.x, 0.5 * height, rect.position.y + 0.5 * rect.size.y)
+				mesh_instance.position = Vector3(rect.position.x + 0.5 * rect.size.x, 0.5 * height - 0.5 * volumeMesh.size.y, rect.position.y + 0.5 * rect.size.y)
 
 				var hue = rng.randfn(0.3, 0.05)
 				var saturation = rng.randfn(0.2, 0.1)
