@@ -34,25 +34,26 @@ func _ready():
 				var size_2 = Vector2(rect.size.x, rect.size.y - size_1.y)
 				stack.push_back(Rect2(position_2, size_2))
 		else:
-			var height = rng.randfn(150, 30)
+			var height = rng.randfn(volumeMesh.size.y, 30)
 
-			var mesh = BoxMesh.new()
-			mesh.size = Vector3(rect.size.x, height, rect.size.y)
+			if height > 10:
+				var mesh = BoxMesh.new()
+				mesh.size = Vector3(rect.size.x, height, rect.size.y)
 
-			var mesh_instance = MeshInstance3D.new()
-			mesh_instance.mesh = mesh
-			mesh_instance.position = Vector3(rect.position.x + 0.5 * rect.size.x, 0.5 * height, rect.position.y + 0.5 * rect.size.y)
+				var mesh_instance = MeshInstance3D.new()
+				mesh_instance.mesh = mesh
+				mesh_instance.position = Vector3(rect.position.x + 0.5 * rect.size.x, 0.5 * height, rect.position.y + 0.5 * rect.size.y)
 
-			var hue = rng.randfn(0.3, 0.05)
-			var saturation = rng.randfn(0.2, 0.1)
-			var lightness = rng.randfn(0.8, 0.1)
-			var color = Color.from_ok_hsl(hue, saturation, lightness)
+				var hue = rng.randfn(0.3, 0.05)
+				var saturation = rng.randfn(0.2, 0.1)
+				var lightness = rng.randfn(0.8, 0.1)
+				var color = Color.from_ok_hsl(hue, saturation, lightness)
 
-			var material = StandardMaterial3D.new()
-			material.albedo_color = color
-			mesh_instance.set_surface_override_material(0, material)
+				var material = StandardMaterial3D.new()
+				material.albedo_color = color
+				mesh_instance.set_surface_override_material(0, material)
 
-			add_child(mesh_instance)
+				add_child(mesh_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
