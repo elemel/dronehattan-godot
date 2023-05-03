@@ -1,5 +1,8 @@
 extends Node3D
 
+const ALLEY_WIDTH = 30
+const STREET_WIDTH = 18
+
 var rng = RandomNumberGenerator.new()
 # var size = Vector2(274, 80) - Vector2(30, 18)
 
@@ -7,9 +10,11 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var volumeMesh: BoxMesh = volume.mesh
-	var buildableSize = Vector2(volumeMesh.size.x, volumeMesh.size.z) - Vector2(30, 18)
-	var stack = [Rect2(-0.5 * buildableSize, buildableSize)]
+	var volume_mesh: BoxMesh = volume.mesh
+	var area_size = Vector2(volume_mesh.size.x, volume_mesh.size.z)
+	var block_height = volume_mesh.size.y
+	var buildable_size = area_size - Vector2(ALLEY_WIDTH, STREET_WIDTH)
+	var stack = [Rect2(-0.5 * buildable_size, buildable_size)]
 
 	while stack:
 		var rect: Rect2 = stack.pop_back()
@@ -34,15 +39,18 @@ func _ready():
 				var size_2 = Vector2(rect.size.x, rect.size.y - size_1.y)
 				stack.push_back(Rect2(position_2, size_2))
 		else:
-			var height = rng.randfn(volumeMesh.size.y, 30)
+			var building_height = rng.randfn(block_height, 30)
 
-			if height > 10:
+			if building_height > 10:
 				var mesh = BoxMesh.new()
-				mesh.size = Vector3(rect.size.x, height, rect.size.y)
+				mesh.size = Vector3(rect.size.x, building_height, rect.size.y)
 
 				var mesh_instance = MeshInstance3D.new()
 				mesh_instance.mesh = mesh
-				mesh_instance.position = Vector3(rect.position.x + 0.5 * rect.size.x, 0.5 * height - 0.5 * volumeMesh.size.y, rect.position.y + 0.5 * rect.size.y)
+				mesh_instance.position = Vector3(
+					rect.position.x + 0.5 * rect.size.x,
+					0.5 * building_height - 0.5 * block_height,
+					rect.position.y + 0.5 * rect.size.y)
 
 				var hue = rng.randfn(0.3, 0.05)
 				var saturation = rng.randfn(0.2, 0.1)
